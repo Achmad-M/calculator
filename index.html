@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculator</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    
+    <div class="calculator_bg">
+
+        <div class="output_border">
+
+            <form name="form">
+
+				<input class="output_number" name="output_number">
+
+			</form>
+
+        </div>
+
+        <div class="colomn" id="colomn_1">
+
+
+            <ul class ="ul_colomn center" id="ul_colomn_1">
+
+                <li class="button_calculator operator" id="delete" onclick="deleteFunc()"><button>C</button></li>
+
+                <li class="button_calculator normal_number row_2" id="button_7" onclick="insert(7)"><button>7</button> </li>
+
+                <li class="button_calculator normal_number row_3_4_5" id="button_4" onclick="insert(4)"><button>4</button> </li>
+
+                <li class="button_calculator normal_number row_3_4_5" id="button_1" onclick="insert(1)"> <button>1</button></li>
+                
+            </ul>
+            
+    
+        </div>
+
+        <div class="colomn" id="colomn_2">
+
+            <ul class ="ul_colomn center" id="ul_colomn_2">
+                
+                <li class="button_calculator operator" id="plus_minus_button" onclick="changeSign()"><button>+/-</button></li>
+
+                <li class="button_calculator normal_number row_2" id="button_8" onclick="insert(8)"><button>8</button></li>
+
+                <li class="button_calculator normal_number row_3_4_5" id="button_5" onclick="insert(5)"><button>5</button></li>
+
+                <li class="button_calculator normal_number row_3_4_5" id="button_2" onclick="insert(2)"><button>2</button></li>
+                
+            </ul>    
+
+        </div>
+        
+        <div class="colomn" id="colomn_3">
+
+            <ul class ="ul_colomn center" id="ul_colomn_3">
+
+                <li class="button_calculator operator" id="percent_button" onclick="percent()"><button>%</button></li>
+
+                <li class="button_calculator row_2 normal_number" id="button_9" onclick="insert(9)"><button>9</button></li>
+
+                <li class="button_calculator normal_number row_3_4_5" id="button_6" onclick="insert(6)"><button>6</button></li>
+
+                <li class="button_calculator normal_number row_3_4_5" id="button_3" onclick="insert(3)"><button>3</button></li>
+
+                <li class="button_calculator normal_number row_3_4_5" id="button_dot" onclick="insertOpr('.')"><button>.</button></li>
+
+            </ul>
+
+        </div>
+
+        <div class="colomn" id="colomn_4">
+
+            <ul class ="ul_colomn center" id="ul_colomn_4">
+                
+                <li class="button_calculator operator" id="devide_button" onclick="insertOpr('÷')"><button>÷</button></li>
+
+                <li class="button_calculator operator row_2" id="multiplication_button" onclick="insertOpr('x')"><button>x</button></li>
+
+                <li class="button_calculator operator row_3_4_5" id="minus_button" onclick="insertOpr('-')"><button>-</button></li>
+
+                <li class="button_calculator operator row_3_4_5" id="plus_button" onclick="insertOpr('+')"><button>+</button></li>
+
+                <li class="button_calculator operator row_3_4_5" id="equal_button" onclick="equal()"><button>=</button></li>
+
+            </ul>
+
+        </div>
+
+        <div class="button_0 center">
+
+            <button onclick="insert(0)">0</button>
+
+        </div>
+        
+
+    </div>
+    <script src="main.js"></script>>
+</body>
+</html>
