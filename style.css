@@ -51,24 +51,19 @@ table {
 /* Start Here the code */
 
 body{
-
     background-color: #1E1E1E;
-
 }
 
 .calculator_bg{
-
     margin: 30px;
     height: 585px;
     width: 393.5px;
     background-color: #93D94E;
     border-radius: 20px;
     position: relative;
-
 }
 
 .output_border{
-
     width: 340px;
     height: 117px;
     margin: 34px 26px 0px;
@@ -77,11 +72,9 @@ body{
     border-radius: 10px;
     box-sizing: border-box;
     position: absolute;
-
 }
 
 .output_number{
-
     width: 321.3px;
     height: 99.45px;
     margin-top: 10px;
@@ -95,34 +88,25 @@ body{
     border-radius: 5px;
     box-sizing: border-box;
     position: absolute;
-
-    }
+}
 
 .colomn{
-
     float: left;
     box-sizing: border-box;
-
-    
 }
 
 .ul_colomn{
-
     list-style-type: none;
-
 }
 
 
 .button_calculator {
-
     height: 67.31px;
     width: 67.31px;
     box-sizing: border-box;
     outline: none;
-    
 }
 .operator button {
-
     background-color: #3B8C66;
     color: white;
     height: 100%;
@@ -136,19 +120,23 @@ body{
     font-weight: 400;
     font-size: 32px;
     box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
+}
 
+#multiplication_button button, #percent_button button,#plus_minus_button button  {
+    font-size: 28px;
+}
+
+#division_button button {
+    font-size: 40px;
 }
 
 .normal_number{
-
     height: 67.31px;
     width: 67.31px;
     box-sizing: border-box;
-
 }
 
 .normal_number button, .button_0 button{
-
     background: #233240;
     color: white;
     height: 100%;
@@ -165,7 +153,6 @@ body{
 }
 
 .button_0 {
-
     margin-top: 495px;
     width: 159.1px;
     height: 67.31px;
@@ -175,49 +162,38 @@ body{
 }
 
 .row_2{
-
     margin-top: 14.28px;
 }
 
 .row_3_4_5  {
-
     margin-top: 12px;
 }
 
 button:hover {
-
     box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
   
 button:active {
-
     /* Add box-shadow effect on active state */
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-  }
+}
 
 #ul_colomn_1{
-
     margin-top: 175px;
     margin-left: 28px;
     text-align: center;
-
 }
 
 #ul_colomn_2{
-
     margin-top: 175px;
     margin-left: 24.48px;
     text-align: center;
-
 }
 
 #ul_colomn_3, #ul_colomn_4{
-
     margin-top: 175px;
     margin-left: 22.44px;
     text-align: center;
-    
 }
 
 #delete button{
