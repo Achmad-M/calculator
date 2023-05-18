@@ -1,13 +1,4 @@
-        // This function is used to handle key press event and insert the pressed key value as a number in the output field
-        document.addEventListener('keypress', function (event) {
-            var key = event.which || event.keyCode;
-            if(key >= 48 && key <= 57) {
-                // check if the key pressed is a number between 0-9, if true insert that number in the output field
-                insert(key-48);
-            }
-        });
-
-        // Event listener to handle pressed keyboard buttons
+      // Event listener to handle pressed keyboard buttons
         document.addEventListener("keydown", function(event) {
             if (event.key === "-") {
               insert('-');
@@ -175,31 +166,6 @@
             if(key >= 48 && key <= 57) {
                 // check if the key pressed is a number between 0-9, if true insert that number in the output field
                 insert(key-48);
-            }
-        });
-
-        // Event listener to handle pressed keyboard buttons
-        document.addEventListener("keydown", function(event) {
-            if (event.key === "-") {
-              insert('-');
-            } else if (event.key === "/") {
-                insertOpr('÷');
-            } else if (event.shiftKey && event.key === "+" ) {
-                insertOpr('+');
-            } else if (event.key === "=" || event.key ==="Enter") {
-                equal();
-            } else if (event.key === "Delete") {
-                deleteFunc();
-            } else if (event.key === ".") {
-                insertOpr(".");
-            } else if (event.key === "x") {
-                insertOpr('x');
-            } else if (event.key === "Backspace") {
-                back();
-            } else if (event.shiftKey && event.key === "%" ) {
-                percent();
-            } else if (event.ctrlKey && event.key === "a") {
-                document.form.output_number.select();
             }
         });
 
