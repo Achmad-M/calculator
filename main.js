@@ -6,6 +6,10 @@
                 insertOpr('÷');
             } else if (event.shiftKey && event.key === "+" ) {
                 insertOpr('+');
+            } else if (event.shiftKey && event.key === "(" ) {
+                insertOpr('(');
+            } else if (event.shiftKey && event.key === ")" ) {
+                insertOpr(')');
             } else if (event.key === "=" || event.key ==="Enter") {
                 equal();
             } else if (event.key === "Delete") {
@@ -22,26 +26,6 @@
                 document.form.output_number.select();
             }
         });
-
-        // The function takes in an operator (opr) as an argument
-        function insertOpr(opr) {
-            // It retrieves the current value of the output field (result)
-            var result = document.form.output_number.value;
-            if(result){
-                // If there is a value in the output field
-                // It stores the last character of the output field (lastChar)
-                var lastChar = result[result.length - 1];
-            
-                // It then checks if the last character is an operator
-                // If it is, it removes the last operator
-                if (lastChar === '+' || lastChar === '-' || lastChar === 'x' || lastChar === '÷') {
-                    result = result.substring(0, result.length - 1);
-                }
-                // It then appends the new operator to the output field
-                document.form.output_number.value = result + opr;
-            }
-            
-        }
 
         // This function is called 'insert' and it takes in a parameter called 'number'.
         function insert(number) {
@@ -77,7 +61,7 @@
                 }
             // In case of an error, the user is alerted to check if the input is correct
             } catch (error) {
-                alert("Please make sure the calculation you entered is correct!");
+                alert("Invalid syntax: Please check the placement of parentheses and operators in your calculation");
             }
         }
 
@@ -171,32 +155,20 @@
 
         // The function takes in an operator (opr) as an argument
         function insertOpr(opr) {
-            // It retrieves the current value of the output field (result)
             var result = document.form.output_number.value;
-            if(result){
-                // If there is a value in the output field
-                // It stores the last character of the output field (lastChar)
+            // Check if the operator is "(" or ")"
+            if (opr === '(' || opr === ')') {
+                // Append the operator to the output field
+                document.form.output_number.value = result + opr;
+            } else if (result) {
                 var lastChar = result[result.length - 1];
-            
-                // It then checks if the last character is an operator
-                // If it is, it removes the last operator
                 if (lastChar === '+' || lastChar === '-' || lastChar === 'x' || lastChar === '÷') {
                     result = result.substring(0, result.length - 1);
                 }
-                // It then appends the new operator to the output field
                 document.form.output_number.value = result + opr;
             }
-            
         }
-
-        // This function is called 'insert' and it takes in a parameter called 'number'.
-        function insert(number) {
-            // It retrieves the current value of the element with the name 'output_number' in the form 'form'.
-            var result = document.form.output_number.value;
-            // It then assigns the current value of 'output_number' plus the passed in 'number' to the 'output_number' element
-            document.form.output_number.value = document.form.output_number.value + number;
-        }
-
+        
         // The function "deleteFunc" is used to delete all characters on the input value.
         function deleteFunc(){
             document.form.output_number.value = "";
