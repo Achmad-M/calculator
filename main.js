@@ -6,6 +6,10 @@
                 insertOpr('÷');
             } else if (event.shiftKey && event.key === "+" ) {
                 insertOpr('+');
+            } else if (event.shiftKey && event.key === "(" ) {
+                insertOpr('(');
+            } else if (event.shiftKey && event.key === ")" ) {
+                insertOpr(')');
             } else if (event.key === "=" || event.key ==="Enter") {
                 equal();
             } else if (event.key === "Delete") {
@@ -23,26 +27,6 @@
             }
         });
 
-        // The function takes in an operator (opr) as an argument
-        function insertOpr(opr) {
-            // It retrieves the current value of the output field (result)
-            var result = document.form.output_number.value;
-            if(result){
-                // If there is a value in the output field
-                // It stores the last character of the output field (lastChar)
-                var lastChar = result[result.length - 1];
-            
-                // It then checks if the last character is an operator
-                // If it is, it removes the last operator
-                if (lastChar === '+' || lastChar === '-' || lastChar === 'x' || lastChar === '÷') {
-                    result = result.substring(0, result.length - 1);
-                }
-                // It then appends the new operator to the output field
-                document.form.output_number.value = result + opr;
-            }
-            
-        }
-
         // This function is called 'insert' and it takes in a parameter called 'number'.
         function insert(number) {
             // It retrieves the current value of the element with the name 'output_number' in the form 'form'.
@@ -54,31 +38,6 @@
         // The function "deleteFunc" is used to delete all characters on the input value.
         function deleteFunc(){
             document.form.output_number.value = "";
-        }
-
-        // The function "equal" is used to perform calculations on the input value.
-        function equal(){
-            try {
-                var result = document.form.output_number.value;
-                if(result){
-                    // It then replaces any instances of "x" with "*" and "÷" with "/" and "--" with "+" to ensure that the input can be evaluated
-                    if(result.includes("x")){
-                        result = result.replace(/x/g, "*");
-
-                    } else if(result.includes("÷")){
-                        result = result.replace(/÷/g, "/");
-
-                    } else if(result.includes("--")){
-                        result = result.replace(/--/g, "+");
-
-                    }
-                    // Then, the input value is evaluated using the javascript "eval" function.
-                    document.form.output_number.value = eval(result);
-                }
-            // In case of an error, the user is alerted to check if the input is correct
-            } catch (error) {
-                alert("Please make sure the calculation you entered is correct!");
-            }
         }
 
         // This function changes number to percent of the last number in the calculator's display
@@ -112,12 +71,10 @@
 
         }
 
-        // This function changes the sign of the last number in the calculator's display
-        function changeSign() {
-            // Get the current value in the calculator's display
+        function squareRootLastNumber() {
             var result = document.form.output_number.value;
             if (result) {
-                //  Find the last number in the display
+                // Mencari angka terakhir dalam tampilan kalkulator
                 var lastNumber = "";
                 var start = false;
                 for (var i = result.length - 1; i >= 0; i--) {
@@ -130,8 +87,8 @@
                     start = true;
                     lastNumber = result[i] + lastNumber;
                 }
-    
-                // Get the characters before the last number
+                
+                // Mendapatkan karakter sebelum angka terakhir
                 var firstNumber = "";
                 if (start) {
                     for (var i = 0; i < result.length - lastNumber.length; i++) {
@@ -140,18 +97,48 @@
                 } else {
                     firstNumber = result;
                 }
-    
-                // Change the sign of the last number
-                if (lastNumber.charAt(0) === '-') {
-                    lastNumber = lastNumber.substring(1);
-                } else {
-                    lastNumber = '-' + lastNumber;
-                }
-    
-                // Update the calculator's display with the new value
-                document.form.output_number.value = firstNumber.toString() + lastNumber;
+                
+                // Mengubah angka terakhir menjadi akar pangkat dua
+                lastNumber = Math.sqrt(parseFloat(lastNumber)).toString();
+                
+                // Mengupdate tampilan kalkulator dengan nilai baru
+                document.form.output_number.value = firstNumber + lastNumber;
             }
-    
+        }
+        
+        function squareLastNumber() {
+            var result = document.form.output_number.value;
+            if (result) {
+                // Mencari angka terakhir dalam tampilan kalkulator
+                var lastNumber = "";
+                var start = false;
+                for (var i = result.length - 1; i >= 0; i--) {
+                    if (isNaN(result[i]) && result[i] !== "." && result[i] !== "-") {
+                        break;
+                    }
+                    if (result[i] === "-" && i !== 0) {
+                        break;
+                    }
+                    start = true;
+                    lastNumber = result[i] + lastNumber;
+                }
+        
+                // Mendapatkan karakter sebelum angka terakhir
+                var firstNumber = "";
+                if (start) {
+                    for (var i = 0; i < result.length - lastNumber.length; i++) {
+                        firstNumber += result[i];
+                    }
+                } else {
+                    firstNumber = result;
+                }
+        
+                // Menghitung pangkat dua dari angka terakhir
+                var squaredNumber = parseFloat(lastNumber) ** 2;
+        
+                // Menggabungkan kembali hasil perhitungan ke dalam tampilan kalkulator
+                document.form.output_number.value = firstNumber.toString() + squaredNumber.toString();
+            }
         }
 
         // This function is used to delete the last character of the output value in the calculator
@@ -169,94 +156,39 @@
             }
         });
 
-        // The function takes in an operator (opr) as an argument
         function insertOpr(opr) {
-            // It retrieves the current value of the output field (result)
             var result = document.form.output_number.value;
-            if(result){
-                // If there is a value in the output field
-                // It stores the last character of the output field (lastChar)
+            if (opr === '(' || opr === ')') {
+                document.form.output_number.value = result + opr;
+            } else if (result) {
                 var lastChar = result[result.length - 1];
-            
-                // It then checks if the last character is an operator
-                // If it is, it removes the last operator
                 if (lastChar === '+' || lastChar === '-' || lastChar === 'x' || lastChar === '÷') {
                     result = result.substring(0, result.length - 1);
                 }
-                // It then appends the new operator to the output field
                 document.form.output_number.value = result + opr;
             }
-            
         }
-
-        // This function is called 'insert' and it takes in a parameter called 'number'.
-        function insert(number) {
-            // It retrieves the current value of the element with the name 'output_number' in the form 'form'.
-            var result = document.form.output_number.value;
-            // It then assigns the current value of 'output_number' plus the passed in 'number' to the 'output_number' element
-            document.form.output_number.value = document.form.output_number.value + number;
-        }
-
-        // The function "deleteFunc" is used to delete all characters on the input value.
-        function deleteFunc(){
-            document.form.output_number.value = "";
-        }
+        
 
         // The function "equal" is used to perform calculations on the input value.
-        function equal(){
+        function equal() {
             try {
                 var result = document.form.output_number.value;
-                if(result){
-                    // It then replaces any instances of "x" with "*" and "÷" with "/" and "--" with "+" to ensure that the input can be evaluated
-                    if(result.includes("x")){
-                        result = result.replace(/x/g, "*");
+                if (result) {
+                    // Mengganti "x" dengan "*" dan "÷" dengan "/"
+                    result = result.replace(/x/g, "*").replace(/÷/g, "/");
 
-                    } else if(result.includes("÷")){
-                        result = result.replace(/÷/g, "/");
+                    // Menggunakan math.evaluate() untuk mengevaluasi ekspresi matematika
+                    var mathResult = math.evaluate(result);
 
-                    } else if(result.includes("--")){
-                        result = result.replace(/--/g, "+");
-
-                    }
-                    // Then, the input value is evaluated using the javascript "eval" function.
-                    document.form.output_number.value = eval(result);
+                    // Mengubah hasil evaluasi menjadi string dan menampilkan pada output
+                    document.form.output_number.value = mathResult.toString();
                 }
-            // In case of an error, the user is alerted to check if the input is correct
             } catch (error) {
                 alert("Please make sure the calculation you entered is correct!");
             }
         }
 
-        // This function changes number to percent of the last number in the calculator's display
-        function percent(){
-            // Assign the value of the output_number element to the variable "result"
-            var result = document.form.output_number.value;
-            if (result) {
-                // Initialize the "lastNumber" variable as an empty string
-                var lastNumber = "";
-                // Iterate through the characters of the "result" variable starting from the last character
-                for (var i = result.length - 1; i >= 0; i--) {
-                    // Check if the current character is a number, '-' or '.'
-                    if (!isNaN(result[i]) || result[i] === '-' || result[i] === '.') {
-                        lastNumber = result[i] + lastNumber;
-                    } else {
-                        // If it is not a number, break the loop
-                        break;
-                    }
-                }
-
-                // Initialize the "firstNumber" variable as an empty string
-                var firstNumber = "";
-                // Iterate through the characters of the "result" variable starting from the first character
-                for (var i = 0; i < result.length - lastNumber.length; i++) {
-                    // Add the current character to the "firstNumber" variable
-                    firstNumber += result[i];
-                }
-                // Assign the value of the "firstNumber" variable concatenated with the value of the "lastNumber" divided by 100 to the "output_number" element
-                document.form.output_number.value = firstNumber.toString() + lastNumber / 100;
-            }
-
-        }
 
         // This function changes the sign of the last number in the calculator's display
         function changeSign() {
@@ -298,12 +230,4 @@
                 document.form.output_number.value = firstNumber.toString() + lastNumber;
             }
     
-        }
-
-        // This function is used to delete the last character of the output value in the calculator
-        function back(){
-            // Store the current output value in a variable
-            var result = document.form.output_number.value;
-            // Update the output value by removing the last character
-            document.form.output_number.value = result.substring(0,result.length-1);
         }
