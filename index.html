@@ -36,6 +36,8 @@
 
                 <li class="button_calculator operator" id="delete" onclick="deleteFunc()"><button>C</button></li>
 
+                <li class="button_calculator operator row_2" id=" " onclick="insertOpr('(')"><button>(</button></li>
+
                 <li class="button_calculator normal_number row_2" id="button_7" onclick="insert(7)"><button>7</button> </li>
 
                 <li class="button_calculator normal_number row_3_4_5" id="button_4" onclick="insert(4)"><button>4</button> </li>
@@ -53,6 +55,8 @@
                 
                 <li class="button_calculator operator" id="plus_minus_button" onclick="changeSign()"><button>+/-</button></li>
 
+                <li class="button_calculator operator row_2" id=" " onclick="insertOpr(')')"><button>)</button></li>
+
                 <li class="button_calculator normal_number row_2" id="button_8" onclick="insert(8)"><button>8</button></li>
 
                 <li class="button_calculator normal_number row_3_4_5" id="button_5" onclick="insert(5)"><button>5</button></li>
@@ -67,7 +71,9 @@
 
             <ul class ="ul_colomn center" id="ul_colomn_3">
 
-                <li class="button_calculator operator" id="percent_button" onclick="percent()"><button>%</button></li>
+                <li class="button_calculator operator" id=" " onclick="squareLastNumber()"><button>x²</button></li>
+                
+                <li class="button_calculator operator row_2" id="percent_button" onclick="percent()"><button>%</button></li>
 
                 <li class="button_calculator row_2 normal_number" id="button_9" onclick="insert(9)"><button>9</button></li>
 
@@ -85,7 +91,9 @@
 
             <ul class ="ul_colomn center" id="ul_colomn_4">
                 
-                <li class="button_calculator operator" id="division_button" onclick="insertOpr('÷')"><button>÷</button></li>
+                <li class="button_calculator operator" id=" " onclick="squareRootLastNumber()"><button>√</button></li>
+                
+                <li class="button_calculator operator row_2" id="division_button" onclick="insertOpr('÷')"><button>÷</button></li>
 
                 <li class="button_calculator operator row_2" id="multiplication_button" onclick="insertOpr('x')"><button>x</button></li>
 
@@ -107,6 +115,9 @@
         
 
     </div>
-    <script src="main.js"></script>>
+    <script src="main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.7.0/math.min.js"></script>
+
+
 </body>
 </html>
